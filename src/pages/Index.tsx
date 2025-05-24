@@ -21,6 +21,12 @@ const Index = () => {
                 Student Login
               </Link>
               <Link 
+                to="/teacher-dashboard"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                Teacher Login
+              </Link>
+              <Link 
                 to="/parent-dashboard"
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
               >
@@ -44,12 +50,12 @@ const Index = () => {
             Welcome to <span className="text-blue-600">EduPortal</span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            Your comprehensive educational management system for students, parents, and administrators.
+            Your comprehensive educational management system for students, teachers, parents, and administrators.
           </p>
         </div>
 
         {/* Feature Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="p-6">
               <div className="flex items-center">
@@ -72,6 +78,33 @@ const Index = () => {
               <div className="text-sm">
                 <Link to="/student-dashboard" className="font-medium text-blue-600 hover:text-blue-500">
                   Go to Student Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-6">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <GraduationCap className="h-8 w-8 text-indigo-600" />
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      For Teachers
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      AI-powered lesson planning and classroom management
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-6 py-3">
+              <div className="text-sm">
+                <Link to="/teacher-dashboard" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  Go to Teacher Dashboard
                 </Link>
               </div>
             </div>
