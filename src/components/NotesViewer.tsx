@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { BookOpen, Calendar, Download, Highlight, MessageCircle, Play } from 'lucide-react';
+import { BookOpen, Calendar, Download, Highlighter, MessageCircle, Play } from 'lucide-react';
 
 const NotesViewer = () => {
   const [selectedSubject, setSelectedSubject] = useState('all');
@@ -163,7 +162,7 @@ const NotesViewer = () => {
               {/* AI Explanation */}
               <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-200">
                 <h4 className="font-medium text-purple-800 mb-2 flex items-center">
-                  <Highlight className="w-4 h-4 mr-2" />
+                  <Highlighter className="w-4 h-4 mr-2" />
                   AI Explanation:
                 </h4>
                 <p className="text-purple-700 text-sm leading-relaxed">{note.aiExplanation}</p>
