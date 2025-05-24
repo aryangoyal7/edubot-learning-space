@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -195,7 +194,7 @@ export const ScheduleAttendance = () => {
               <div key={index} className="p-3 border rounded-lg">
                 <p className="font-medium text-sm">{event.title}</p>
                 <p className="text-xs text-gray-600">{event.date} at {event.time}</p>
-                <Badge size="sm" variant="outline" className="mt-1">
+                <Badge variant="outline" className="mt-1 text-xs">
                   {event.type}
                 </Badge>
               </div>
