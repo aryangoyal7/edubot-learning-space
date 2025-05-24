@@ -1,163 +1,137 @@
 import React from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { GraduationCap, BookOpen, Users, Settings, MessageCircle, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { GraduationCap, Users, Heart, Settings } from 'lucide-react';
 
 const Index = () => {
-  const navigate = useNavigate();
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
-
-  const roles = [
-    {
-      id: 'student',
-      title: 'Student',
-      description: 'Access your lectures, homework, and AI-powered study tools',
-      icon: GraduationCap,
-      color: 'bg-gradient-to-br from-purple-500 to-blue-600',
-      route: '/student-dashboard'
-    },
-    {
-      id: 'teacher',
-      title: 'Teacher',
-      description: 'Manage classes, assignments, and track student progress',
-      icon: BookOpen,
-      color: 'bg-gradient-to-br from-green-500 to-emerald-600',
-      route: '/teacher-dashboard'
-    },
-    {
-      id: 'parent',
-      title: 'Parent',
-      description: 'Monitor your child\'s academic progress and activities',
-      icon: Users,
-      color: 'bg-gradient-to-br from-orange-500 to-red-600',
-      route: '/parent-dashboard'
-    },
-    {
-      id: 'admin',
-      title: 'Admin',
-      description: 'Manage the entire educational platform and users',
-      icon: Settings,
-      color: 'bg-gradient-to-br from-gray-600 to-gray-800',
-      route: '/admin-dashboard'
-    }
-  ];
-
-  const handleRoleSelect = (role: any) => {
-    setSelectedRole(role.id);
-    if (role.id === 'student') {
-      navigate('/student-dashboard');
-    } else if (role.id === 'parent') {
-      navigate('/parent-dashboard');
-    } else {
-      // Placeholder for other roles
-      console.log(`Selected role: ${role.title}`);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                  EduAI Platform
-                </h1>
-                <p className="text-sm text-gray-600">Powered by Artificial Intelligence</p>
-              </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      {/* Navigation */}
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center">
+              <GraduationCap className="h-8 w-8 text-blue-600" />
+              <span className="ml-2 text-xl font-bold text-gray-900">EduPortal</span>
             </div>
-            <Button variant="outline" className="bg-white/50 hover:bg-white/80">
-              Sign In
-            </Button>
+            <div className="flex items-center space-x-4">
+              <Link 
+                to="/student-dashboard"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                Student Login
+              </Link>
+              <Link 
+                to="/parent-dashboard"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                Parent Login
+              </Link>
+              <Link 
+                to="/admin-dashboard"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                Admin Login
+              </Link>
+            </div>
           </div>
         </div>
-      </header>
+      </nav>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Welcome to the Future of
-            <span className="block bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              K-12 Education
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            An AI-powered platform designed to enhance learning experiences for students, 
-            empower teachers with intelligent tools, and keep parents connected to their child's educational journey.
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            Welcome to <span className="text-blue-600">EduPortal</span>
+          </h1>
+          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            Your comprehensive educational management system for students, parents, and administrators.
           </p>
         </div>
 
-        {/* Role Selection */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">
-            Choose Your Role to Get Started
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {roles.map((role) => {
-              const IconComponent = role.icon;
-              return (
-                <Card 
-                  key={role.id}
-                  className={`cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 group ${
-                    selectedRole === role.id ? 'border-purple-400 shadow-lg' : 'border-gray-200 hover:border-purple-300'
-                  }`}
-                  onClick={() => handleRoleSelect(role)}
-                >
-                  <CardHeader className="text-center pb-4">
-                    <div className={`w-16 h-16 mx-auto rounded-2xl ${role.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-800">{role.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <CardDescription className="text-center text-gray-600 leading-relaxed">
-                      {role.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              );
-            })}
+        {/* Feature Cards */}
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-6">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <Users className="h-8 w-8 text-blue-600" />
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      For Students
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Access your academic progress, homework, and more
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-6 py-3">
+              <div className="text-sm">
+                <Link to="/student-dashboard" className="font-medium text-blue-600 hover:text-blue-500">
+                  Go to Student Dashboard
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Features Preview */}
-        <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-purple-100">
-          <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">
-            Powered by Advanced AI Technology
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-white" />
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-6">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <Heart className="h-8 w-8 text-green-600" />
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      For Parents
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Monitor your child's progress and communicate with teachers
+                    </dd>
+                  </dl>
+                </div>
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">AI-Generated Notes</h4>
-              <p className="text-gray-600 text-sm">Intelligent lecture summaries and explanations tailored to each student's learning pace</p>
             </div>
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <MessageCircle className="w-6 h-6 text-white" />
+            <div className="bg-gray-50 px-6 py-3">
+              <div className="text-sm">
+                <Link to="/parent-dashboard" className="font-medium text-green-600 hover:text-green-500">
+                  Go to Parent Dashboard
+                </Link>
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">Smart Doubt Resolution</h4>
-              <p className="text-gray-600 text-sm">24/7 AI-powered chat assistant for instant help with any academic question</p>
             </div>
-            <div className="text-center p-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <BarChart3 className="w-6 h-6 text-white" />
+          </div>
+
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-6">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <Settings className="h-8 w-8 text-purple-600" />
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      For Administrators
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Manage school operations with AI-powered insights
+                    </dd>
+                  </dl>
+                </div>
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">Progress Analytics</h4>
-              <p className="text-gray-600 text-sm">Comprehensive insights into learning patterns and academic performance</p>
+            </div>
+            <div className="bg-gray-50 px-6 py-3">
+              <div className="text-sm">
+                <Link to="/admin-dashboard" className="font-medium text-purple-600 hover:text-purple-500">
+                  Go to Admin Dashboard
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
