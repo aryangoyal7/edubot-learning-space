@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -47,9 +46,10 @@ const Index = () => {
 
   const handleRoleSelect = (role: any) => {
     setSelectedRole(role.id);
-    // For now, navigate to student dashboard for demo
     if (role.id === 'student') {
       navigate('/student-dashboard');
+    } else if (role.id === 'parent') {
+      navigate('/parent-dashboard');
     } else {
       // Placeholder for other roles
       console.log(`Selected role: ${role.title}`);
